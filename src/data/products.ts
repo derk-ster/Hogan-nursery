@@ -1,0 +1,144 @@
+import { getStockByProductId, type StockStatus } from "@/data/stock";
+
+export interface Product {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  badge: string;
+  stockStatus: StockStatus;
+  stockNote: string;
+}
+
+function withStock(
+  product: Omit<Product, "stockStatus" | "stockNote">
+): Product {
+  const stock = getStockByProductId(product.id);
+  return {
+    ...product,
+    stockStatus: stock?.status ?? "call_first",
+    stockNote: stock?.note ?? "Call to check current stock.",
+  };
+}
+
+const productBase: Omit<Product, "stockStatus" | "stockNote">[] = [
+  {
+    id: "violias-flat",
+    name: "Flat of Violas",
+    category: "Flower Flats",
+    description: "Seasonal color for beds and pots.",
+    badge: "Popular",
+  },
+  {
+    id: "soft-leaf-yucca",
+    name: "Soft Leaf Yucca",
+    category: "Yucca & Agave",
+    description: "Hardy accent plants. Varieties may vary.",
+    badge: "Hard to Find",
+  },
+  {
+    id: "tangerine-crossvine",
+    name: "Tangerine Crossvine",
+    category: "Vines",
+    description: "Showy vine for fences and trellises.",
+    badge: "North Texas",
+  },
+  {
+    id: "gardenias",
+    name: "Gardenias",
+    category: "Shrubs",
+    description: "Fragrant shrubs when in season.",
+    badge: "Seasonal",
+  },
+  {
+    id: "ground-cover",
+    name: "Ground Cover",
+    category: "Ground Cover",
+    description: "Options for sun or shade beds. Staff can help you choose.",
+    badge: "Staff Pick",
+  },
+  {
+    id: "abelia",
+    name: "Abelia",
+    category: "Shrubs",
+    description: "Several varieties carried. Call for the one you need.",
+    badge: "Hard to Find",
+  },
+  {
+    id: "crape-myrtle",
+    name: "Crape Myrtle Trees",
+    category: "Trees",
+    description: "Sizes and colors vary. Worth calling ahead for your pick.",
+    badge: "Trees",
+  },
+  {
+    id: "texas-sage",
+    name: "Texas Sage Shrubs",
+    category: "Shrubs",
+    description: "Tough North Texas favorite.",
+    badge: "North Texas",
+  },
+  {
+    id: "purple-sage",
+    name: "Purple Sage Shrubs",
+    category: "Shrubs",
+    description: "Low maintenance color for sunny spots.",
+    badge: "Low Maintenance",
+  },
+  {
+    id: "red-yucca",
+    name: "Red Yuccas",
+    category: "Yucca & Agave",
+    description: "Drought friendly accent. Call for sizes on hand.",
+    badge: "Drought Tough",
+  },
+  {
+    id: "evergreens",
+    name: "Evergreens",
+    category: "Trees & Shrubs",
+    description: "Screening and structure plants. Selection changes often.",
+    badge: "Project Help",
+  },
+  {
+    id: "flower-flats",
+    name: "Flower Flats",
+    category: "Flower Flats",
+    description: "Seasonal bedding plants. Good prices on flats when in stock.",
+    badge: "Good Price",
+  },
+  {
+    id: "shrubs-general",
+    name: "Shrubs",
+    category: "Shrubs",
+    description: "Wide shrub selection packed tight in the yard. Ask staff what fits.",
+    badge: "Variety",
+  },
+  {
+    id: "small-trees",
+    name: "Small Trees",
+    category: "Trees",
+    description: "Ornamental and shade options on the lot today.",
+    badge: "Trees",
+  },
+  {
+    id: "soil-bags",
+    name: "Soil Bags",
+    category: "Landscape Supplies",
+    description: "Bagged soil and amendments for beds and pots.",
+    badge: "Supplies",
+  },
+  {
+    id: "landscape-project",
+    name: "Landscape Project Plants",
+    category: "Mixed",
+    description: "Bring photos of your space. Staff can help plan plant picks.",
+    badge: "Project Help",
+  },
+];
+
+export const products: Product[] = productBase.map(withStock);
+
+// Landscape project has no single stock row — always call
+products.find((p) => p.id === "landscape-project")!.stockStatus = "call_first";
+products.find((p) => p.id === "landscape-project")!.stockNote =
+  "Bring photos. Staff will help you build a list on site.";
