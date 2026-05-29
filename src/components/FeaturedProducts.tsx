@@ -46,6 +46,9 @@ export function FeaturedProducts() {
                   <h3 className="mt-3 font-display text-lg font-semibold text-charcoal">
                     {product.name}
                   </h3>
+                  <p className="mt-1.5 font-display text-xl font-semibold tracking-tight text-olive-dark">
+                    {product.price}
+                  </p>
                   <p className="mt-1 text-xs text-charcoal/65">{product.stockNote}</p>
                   <p className="mt-2 line-clamp-3 flex-1 text-sm text-charcoal/75">
                     {product.description}
