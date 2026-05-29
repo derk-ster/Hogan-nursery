@@ -49,18 +49,27 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-11 max-w-6xl items-center justify-between gap-2 px-3 md:h-12 md:px-5">
-        <a
-          href="#home"
-          className="flex min-w-0 items-baseline gap-1.5 leading-none"
-          onClick={closeMenu}
-        >
-          <span className="truncate font-display text-base font-semibold text-olive-dark">
-            {business.shortName}
+        <div className="flex min-w-0 items-center gap-1.5 sm:gap-2 md:gap-3">
+          <span className="shrink-0 whitespace-nowrap text-[9px] text-charcoal/55 sm:text-[10px]">
+            Demo website by Derek Ray
           </span>
-          <span className="hidden text-[10px] text-charcoal/60 sm:inline">
-            {business.subtitle}
-          </span>
-        </a>
+          <span
+            className="h-3 w-px shrink-0 bg-brown/20"
+            aria-hidden
+          />
+          <a
+            href="#home"
+            className="flex min-w-0 items-baseline gap-1.5 leading-none"
+            onClick={closeMenu}
+          >
+            <span className="truncate font-display text-base font-semibold text-olive-dark">
+              {business.shortName}
+            </span>
+            <span className="hidden text-[10px] text-charcoal/60 sm:inline">
+              {business.subtitle}
+            </span>
+          </a>
+        </div>
 
         <nav
           className="hidden items-center gap-3 md:gap-4 lg:flex"
