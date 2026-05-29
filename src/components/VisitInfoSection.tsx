@@ -32,7 +32,7 @@ export function VisitInfoSection() {
           <Reveal>
             <div
               id="reviews"
-              className="flex flex-col rounded-xl border border-brown/15 bg-cream p-4"
+              className="flex min-w-0 flex-col overflow-hidden rounded-xl border border-brown/15 bg-cream p-4"
             >
               <h3 className="font-display text-lg font-semibold text-charcoal">
                 Reviews
@@ -53,13 +53,13 @@ export function VisitInfoSection() {
               </p>
 
               <ul
-                className="reviews-scroll mt-2 flex gap-2.5 overflow-x-auto overscroll-x-contain pb-2"
+                className="reviews-scroll -mx-1 mt-2 flex min-w-0 gap-2.5 overflow-x-auto overscroll-x-contain px-1 pb-2"
                 aria-label="Customer reviews"
               >
                 {reviews.map((review) => (
                   <li
                     key={review.id}
-                    className="w-[min(72vw,13.5rem)] shrink-0 rounded-lg border border-brown/10 bg-sand/50 px-3 py-2.5"
+                    className="w-[13.5rem] max-w-[72vw] shrink-0 rounded-lg border border-brown/10 bg-sand/50 px-3 py-2.5"
                   >
                     <p className="text-xs leading-snug text-charcoal/85">
                       &ldquo;{review.quote}&rdquo;

@@ -15,6 +15,7 @@ type BaseProps = {
   variant?: Variant;
   children: ReactNode;
   className?: string;
+  wrapClassName?: string;
   magnetic?: boolean;
 };
 
@@ -78,6 +79,7 @@ export const MagneticButton = forwardRef<
     variant = "primary",
     children,
     className = "",
+    wrapClassName = "",
     magnetic = true,
     ...rest
   } = props;
@@ -96,7 +98,7 @@ export const MagneticButton = forwardRef<
     else if (forwardedRef) forwardedRef.current = node;
   };
 
-  const wrapClass = `magnetic-btn-wrap magnetic-btn-wrap-${variant}`;
+  const wrapClass = `magnetic-btn-wrap magnetic-btn-wrap-${variant} ${wrapClassName}`;
   const classes = `magnetic-btn magnetic-btn-${variant} ${variantClass[variant]} ${className}`;
 
   const controlContent = (

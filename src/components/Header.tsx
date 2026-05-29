@@ -14,6 +14,9 @@ const navLinks = [
   { href: "#visit-info", label: "Visit" },
 ];
 
+const headerActionBtn =
+  "h-9 min-h-9 rounded-full px-3.5 text-xs font-medium leading-none";
+
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -48,9 +51,9 @@ export function Header() {
         scrolled ? "glass-header shadow-sm" : "bg-cream/85 backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto flex h-11 max-w-6xl items-center justify-between gap-2 px-3 md:h-12 md:px-5">
-        <div className="flex min-w-0 items-center gap-1.5 sm:gap-2 md:gap-3">
-          <span className="shrink-0 whitespace-nowrap text-[9px] text-charcoal/55 sm:text-[10px]">
+      <div className="mx-auto flex h-11 max-w-6xl items-center justify-between gap-2 overflow-hidden px-3 md:h-12 md:px-5">
+        <div className="flex min-w-0 flex-1 items-center gap-1.5 sm:gap-2 md:gap-3">
+          <span className="min-w-0 truncate text-[9px] text-charcoal/55 sm:shrink-0 sm:overflow-visible sm:whitespace-nowrap sm:text-[10px]">
             Demo website by Derek Ray
           </span>
           <span
@@ -90,7 +93,7 @@ export function Header() {
           <MagneticButton
             href="#stock-check"
             variant="primary"
-            className="hidden px-3 py-1 text-xs sm:inline-flex"
+            className={`hidden sm:inline-flex ${headerActionBtn} !h-9 !min-h-9 !px-3.5 !py-0 !text-xs`}
             magnetic
           >
             Check Stock
@@ -99,7 +102,7 @@ export function Header() {
             ref={listBtnRef}
             type="button"
             onClick={openDrawer}
-            className={`visit-list-target relative rounded-full border border-brown/30 bg-tan px-2 py-1 text-xs font-medium text-charcoal hover:border-clay ${
+            className={`visit-list-target relative border border-brown/30 bg-tan text-charcoal hover:border-clay ${headerActionBtn} ${
               listPulsing ? "visit-list-target-pulse" : ""
             }`}
             aria-label={`Open visit list, ${count} items`}

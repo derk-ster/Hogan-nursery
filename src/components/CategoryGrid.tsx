@@ -17,7 +17,7 @@ export function CategoryGrid() {
       className="scroll-mt-[4.5rem] bg-cream py-10 md:py-12"
       aria-labelledby="plants-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 md:px-6">
+      <div className="mx-auto min-w-0 max-w-6xl px-4 md:px-6">
         <Reveal>
           <SectionHeading
             id="plants-heading"
@@ -26,13 +26,21 @@ export function CategoryGrid() {
           />
         </Reveal>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((cat, i) => (
-            <Reveal key={cat.id}>
-              <article
-                className="card-hover-lift product-shimmer flex h-full flex-col rounded-2xl border border-brown/20 bg-tan/60 p-5"
-                style={{ transitionDelay: `${i * 50}ms` }}
-              >
+        <Reveal>
+          <p className="mb-4 text-center text-xs text-charcoal/55">
+            Scroll sideways for more categories
+          </p>
+        </Reveal>
+
+        <div className="min-w-0 max-w-full overflow-hidden">
+          <div className="panel-scroll overflow-x-auto overscroll-x-contain pb-1 md:-mx-6 md:px-6">
+            <div className="inline-grid grid-flow-col grid-rows-2 auto-cols-[minmax(15rem,17rem)] gap-4">
+            {categories.map((cat, i) => (
+              <Reveal key={cat.id} className="h-full">
+                <article
+                  className="card-hover-lift product-shimmer flex h-full min-h-[15rem] flex-col rounded-2xl border border-brown/20 bg-tan/60 p-5"
+                  style={{ transitionDelay: `${i * 50}ms` }}
+                >
                 <span className="w-fit rounded-full bg-clay/15 px-2 py-0.5 text-xs font-medium text-terracotta">
                   {cat.badge}
                 </span>
@@ -61,6 +69,8 @@ export function CategoryGrid() {
               </article>
             </Reveal>
           ))}
+            </div>
+          </div>
         </div>
       </div>
 

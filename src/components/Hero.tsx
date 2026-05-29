@@ -71,11 +71,12 @@ export function Hero() {
             ))}
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <MagneticButton
               type="button"
               variant="primary"
-              className="px-6 py-3 text-center font-medium"
+              wrapClassName="w-full sm:w-auto"
+              className="w-full px-6 py-3 text-center font-medium sm:w-auto"
               onClick={scrollToQuiz}
             >
               Build Visit List
@@ -83,7 +84,8 @@ export function Hero() {
             <MagneticButton
               href="#stock-check"
               variant="secondary"
-              className="px-6 py-3 text-center font-medium"
+              wrapClassName="w-full sm:w-auto"
+              className="w-full px-6 py-3 text-center font-medium sm:w-auto"
             >
               Call to Check Stock
             </MagneticButton>
